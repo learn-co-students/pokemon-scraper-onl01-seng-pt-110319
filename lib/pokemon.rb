@@ -19,8 +19,8 @@ class Pokemon
     sql = <<-SQL
       SELECT * FROM pokemon WHERE id = ?
     SQL
-    attributes = db.execute(sql, id)
-    Pokemon.new(id: attributes[0], name: attributes[1], type: attributes[2], db: attributes[3])
+    attributes = db.execute(sql, id).flatten
+    Pokemon.new(id: attributes[0], name: attributes[1], type: attributes[2])
   end
 
 end
